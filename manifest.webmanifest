@@ -1,0 +1,18 @@
+{
+  "name": "Hood Boss KEC Training",
+  "short_name": "KEC Training",
+  "description": "Hood Boss kitchen exhaust field training — Level 1 New Technician handout. NEXUS · DoubleA · AntManThePro",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#07070a",
+  "theme_color": "#07070a",
+  "icons": [
+    {
+      "src": "icons/nexus-kec-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
