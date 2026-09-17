@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07070a">
+<title>Hood Boss KEC Training System — Field Handout — NEXUS v12</title>
+<link rel="icon" href="icons/favicon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<style>
+:root{--g:#00ff87;--c:#60efff;--p:#ff0080;--y:#ffcc00;--bg:#07070a;--line:#26323a;--muted:#84929b;--text:#ecfff7}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,sans-serif}
+button,input,textarea,select{font:inherit;color:inherit}button{cursor:pointer}
+.top{position:sticky;top:0;z-index:40;background:#07070af2;border-bottom:1px solid var(--line)}
+.topbar{max-width:1480px;margin:auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.nexus-stamp h1{margin:0;font-size:18px;letter-spacing:.14em;color:var(--g)}
+.nexus-stamp p{margin:0;font:10px ui-monospace,monospace;color:var(--c)}
+.nexus-chip{font:9px ui-monospace,monospace;color:#9ad7c0;border:1px solid #1d3a32;border-radius:99px;padding:2px 7px;display:inline-block;margin-top:3px}
+.sys{font:11px ui-monospace,monospace;color:#d8fff0;margin-top:4px}
+.drops{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.dd{position:relative}
+.dd-btn{min-width:168px;background:#0e1519;border:1px solid #34434c;border-radius:10px;padding:8px 34px 8px 12px;text-align:left;color:#eafff5;position:relative}
+.dd-btn .k{display:block;font:9px ui-monospace,monospace;letter-spacing:.14em;color:var(--c)}
+.dd-btn .v{display:block;font-weight:700}
+.dd-btn .caret{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--g)}
+.dd-panel{display:none;position:absolute;right:0;top:calc(100% + 6px);min-width:min(320px,92vw);background:#0b1216;border:1px solid #2a3d38;border-radius:12px;z-index:50}
+.dd.open .dd-panel{display:block}
+.dd-search{width:100%;border:0;border-bottom:1px solid var(--line);background:#081014;color:#fff;padding:10px 12px}
+.dd-list{max-height:320px;overflow:auto;padding:6px}
+.dd-group{font:9px ui-monospace,monospace;letter-spacing:.16em;color:var(--y);padding:8px 10px 4px}
+.dd-item{width:100%;text-align:left;background:transparent;border:1px solid transparent;border-radius:8px;padding:8px 10px;color:#dfffee;display:flex;gap:8px}
+.dd-item:hover,.dd-item.active{background:#0e1c18}
+.shell{max-width:1480px;margin:auto;padding:18px 16px 72px}
+.card{border:1px solid var(--line);background:#0d1418;border-radius:14px}
+.hero-card{padding:22px 24px}
+.kicker{font:10px ui-monospace,monospace;letter-spacing:.18em;color:var(--g)}
+.hero h2{font-size:clamp(26px,4.6vw,48px);line-height:1.05;margin:8px 0 10px}
+.howto{color:#cfe4dc}.howto b{color:var(--g)}
+.note{margin-top:12px;padding:10px 12px;border-left:3px solid var(--y);background:#12100a;color:#cfc8a9;font-size:12px}
+.layout{display:grid;grid-template-columns:300px 1fr;gap:14px;margin-top:16px}
+.sidebar{padding:10px}
+.search{width:100%;padding:10px;background:#080c0f;border:1px solid var(--line);border-radius:8px;color:#fff;margin-bottom:8px}
+.phase-acc{border:1px solid #1c2a30;border-radius:10px;margin:6px 0;overflow:hidden}
+.phase-btn{width:100%;text-align:left;background:#0c1418;border:0;padding:10px 12px;display:flex;gap:8px}
+.phase-body{display:none;padding:4px}.phase-acc.open .phase-body{display:block}
+.module{width:100%;text-align:left;border:1px solid transparent;background:transparent;color:#dfffee;padding:8px 9px}
+.module.active{background:#0d1c17;border-color:#00ff8755}
+.module-head{padding:18px 20px}
+.sec-acc{margin-top:10px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.sec-btn{width:100%;text-align:left;background:transparent;border:0;padding:14px 16px;display:flex}
+.sec-body{display:none;padding:0 16px 12px}.sec-acc.open .sec-body{display:block}
+.check{display:flex;gap:9px;padding:8px 0;border-top:1px solid #182127}
+.text-input{width:100%;margin-top:4px;padding:8px;border-radius:8px;border:1px solid var(--line);background:#080c0f;color:#fff}
+.btn{background:#0e1519;color:#eafff5;border:1px solid #34434c;border-radius:8px;padding:8px 11px}
+.btn.primary{border-color:#00ff8770;background:#0c1a15}
+.footer-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.progressbar{height:7px;background:#12191e;border-radius:99px;overflow:hidden;margin-top:14px}
+.progressbar i{display:block;height:100%;background:linear-gradient(90deg,var(--g),var(--c))}
+.toast{position:fixed;right:14px;bottom:14px;background:#0c1a15;border:1px solid #00ff8770;color:#eafff5;padding:10px 12px;border-radius:10px;display:none}
+.toast.show{display:block}
+.chip{display:inline-flex;gap:6px;padding:6px 9px;border-radius:999px;border:1px solid #2a4a40;background:#0b1613;color:#d9fff0;text-decoration:none;font-size:11px}
+.rel{margin-top:12px;display:flex;flex-wrap:wrap;gap:7px}
+.rel-label{font:9px ui-monospace,monospace;color:var(--muted);width:100%}
+.gate{display:none;position:fixed;inset:0;z-index:90;background:#07070acc;place-items:center;padding:18px}
+.gate.open{display:grid}
+.gate-card{width:min(420px,100%);border:1px solid #00ff8770;background:#0b1216;border-radius:16px;padding:18px}
+.gate-err{color:#ff0080;font:12px ui-monospace,monospace;min-height:16px}
+@media(max-width:980px){.layout{display:flex;flex-direction:column}.hero-card.rule,.metrics,.hub{display:none}.drops{width:100%;margin-left:0}.dd-btn{width:100%}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top"><div class="topbar">
+  <div class="nexus-stamp">
+    <h1>NEXUS</h1>
+    <p>NExtended Xperimental USers</p>
+    <span class="nexus-chip">DoubleA · AntManThePro</span>
+    <div class="sys">HOOD BOSS KEC TRAINING // FIELD HANDOUT</div>
+  </div>
+  <div class="drops">
+    <div class="dd" id="pathDD"><button class="dd-btn" type="button" onclick="toggleMenu('pathDD',event)"><span class="k" id="pathBtnK">PATH</span><span class="v" id="pathBtnVal">Select path</span><span class="caret">▾</span></button><div class="dd-panel"><input class="dd-search" placeholder="Filter paths…" oninput="filterDrop('pathDD')"><div class="dd-list" id="pathList"></div></div></div>
+    <div class="dd" id="modDD"><button class="dd-btn" type="button" onclick="toggleMenu('modDD',event)"><span class="k" id="modBtnK">MODULE</span><span class="v" id="modBtnVal">Select module</span><span class="caret">▾</span></button><div class="dd-panel"><input class="dd-search" placeholder="Jump to module…" oninput="filterDrop('modDD')"><div class="dd-list" id="modList"></div></div></div>
+    <div class="dd" id="actDD"><button class="dd-btn" type="button" onclick="toggleMenu('actDD',event)"><span class="k">ACTIONS</span><span class="v">Record / Reset</span><span class="caret">▾</span></button><div class="dd-panel"><div class="dd-list"><button class="dd-item" onclick="exportRecord()">Training Record</button><button class="dd-item" onclick="resetProgress()">Reset Progress</button></div></div></div>
+    <button class="dd-btn" id="audBtn" type="button" onclick="toggleAudience(event)"><span class="k">AUDIENCE</span><span class="v" id="audVal">Technician</span></button>
+    <div class="dd" id="appDD"><button class="dd-btn" type="button" onclick="toggleMenu('appDD',event)"><span class="k">NEXUS APPS</span><span class="v">Open related tools</span><span class="caret">▾</span></button><div class="dd-panel"><input class="dd-search" placeholder="Filter apps…" oninput="filterDrop('appDD')"><div class="dd-list" id="appList"></div></div></div>
+  </div>
+</div></header>
+<div class="shell">
+  <section class="card hero-card">
+    <div class="kicker">HOW TO USE THIS ON YOUR PHONE</div>
+    <h2>Start here.<br><span style="color:var(--c)">Level 1 · New Technician.</span></h2>
+    <ol class="howto">
+      <li><b>Open the first dropdown</b> — LEVEL 1 / New Technician. Leave it there.</li>
+      <li><b>Open the second dropdown</b> and run modules in order.</li>
+      <li><b>Tap a section title</b> to drop the checkboxes.</li>
+      <li>Do not open Audience unless you are the manager.</li>
+    </ol>
+    <div class="note">Stop. Protect. Document. Escalate. Training guidance only.</div>
+    <div id="heroHub" class="hub"></div>
+    <div class="metrics" style="display:flex;gap:8px;margin-top:12px">
+      <div><b id="moduleCount">0</b> MODULES</div>
+      <div><b id="doneCount">0%</b> COMPLETE</div>
+      <div><b id="checkCount">0</b> CHECKPOINTS</div>
+    </div>
+  </section>
+  <section class="layout">
+    <aside class="sidebar card"><input id="search" class="search" placeholder="Filter modules…" oninput="renderModulesNav()"><div id="moduleList"></div></aside>
+    <main class="main" id="main"></main>
+  </section>
+</div>
+</div>
+<div class="toast" id="toast"></div>
+<div class="gate" id="mgrGate"><form class="gate-card" onsubmit="unlockManager(event)"><div class="kicker">MANAGER LOCK</div><h3>Manager tools</h3><p>Technicians stay on Level 1.</p><input id="mgrPass" class="text-input" type="password" placeholder="Manager code"><div class="gate-err" id="mgrErr"></div><div class="footer-actions"><button class="btn primary" type="submit">Unlock</button><button class="btn" type="button" onclick="closeGate()">Cancel</button></div></form></div>
+<script src="data-new-tech.js"></script>
+<script src="data-experienced-tech.js"></script>
+<script src="data-team-lead.js"></script>
+<script src="data-qa-inspector.js"></script>
+<script src="data-boot.js"></script>
+<script src="app.js"></script>
+</body></html>
