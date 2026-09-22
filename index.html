@@ -3,38 +3,44 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07070a">
 <title>Hood Boss KEC Training System - Field Handout - NEXUS v12</title>
 <link rel="icon" href="icons/favicon.svg">
 <style>
-:root{--g:#00ff87;--c:#60efff;--y:#ffcc00;--bg:#07070a;--line:#26323a;--muted:#84929b;--text:#ecfff7}
+:root{--g:#00ff87;--c:#60efff;--y:#ffcc00;--p:#ff0080;--bg:#07070a;--line:#26323a;--muted:#84929b;--text:#ecfff7}
 *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font:14px/1.5 system-ui,sans-serif}
 button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
-.top{position:sticky;top:0;z-index:40;background:#07070af2;border-bottom:1px solid var(--line)}
-.topbar{max-width:1480px;margin:auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.top{position:sticky;top:0;z-index:40;background:#07070af5;border-bottom:1px solid var(--line)}
+.topbar{max-width:1100px;margin:auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .nexus-stamp h1{margin:0;font-size:18px;letter-spacing:.14em;color:var(--g)}
 .nexus-stamp p{margin:0;font:10px ui-monospace,monospace;color:var(--c)}
 .drops{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
 .dd{position:relative}
-.dd-btn{min-width:168px;background:#0e1519;border:1px solid #34434c;border-radius:10px;padding:8px 34px 8px 12px;text-align:left;color:#eafff5;position:relative}
+.dd-btn{min-width:160px;background:#0e1519;border:1px solid #34434c;border-radius:10px;padding:8px 28px 8px 12px;text-align:left;color:#eafff5}
+.dd.open .dd-btn,.dd-btn:hover{border-color:var(--g)}
 .dd-btn .k{display:block;font:9px ui-monospace,monospace;color:var(--c)}
 .dd-btn .v{display:block;font-weight:700}
-.dd-panel{display:none;position:absolute;right:0;top:calc(100% + 6px);min-width:min(320px,92vw);background:#0b1216;border:1px solid #2a3d38;border-radius:12px;z-index:50}
+.dd-panel{display:none;position:absolute;right:0;top:calc(100% + 6px);min-width:min(340px,92vw);background:#0b1216;border:1px solid #2a3d38;border-radius:12px;z-index:50}
 .dd.open .dd-panel{display:block}
 .dd-search{width:100%;border:0;border-bottom:1px solid var(--line);background:#081014;color:#fff;padding:10px 12px}
-.dd-list{max-height:320px;overflow:auto;padding:6px}
+.dd-list{max-height:340px;overflow:auto;padding:6px}
 .dd-item{width:100%;text-align:left;background:transparent;border:0;border-radius:8px;padding:8px 10px;color:#dfffee;display:block;text-decoration:none}
-.dd-item:hover,.dd-item.active{background:#0e1c18}
-.shell{max-width:1480px;margin:auto;padding:18px 16px 72px}
+.dd-item:hover{background:#0e1c18}
+.pbar-wrap{max-width:1100px;margin:auto;padding:8px 16px 10px}
+.pbar-meta{display:flex;justify-content:space-between;font:10px ui-monospace,monospace;color:var(--muted);margin-bottom:6px}
+.pbar-meta b{color:var(--g)}
+.pbar{position:relative;height:10px;background:#12191e;border-radius:99px}
+.pbar i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--g),var(--c));box-shadow:0 0 14px #00ff8766;transition:width .35s ease}
+.pmark{position:absolute;top:-4px;width:8px;height:18px;border-radius:2px;background:#2a3338}
+.pmark.hit{background:var(--y);box-shadow:0 0 10px var(--y)}
+.pmark[data-v="25"]{left:25%}.pmark[data-v="50"]{left:50%}.pmark[data-v="75"]{left:75%}.pmark[data-v="100"]{left:calc(100% - 8px)}
+.shell{max-width:1100px;margin:auto;padding:16px 16px 80px}
 .card{border:1px solid var(--line);background:#0d1418;border-radius:14px}
-.hero-card{padding:22px 24px}
+.hero-card{padding:16px 18px}
 .kicker{font:10px ui-monospace,monospace;letter-spacing:.18em;color:var(--g)}
-.howto{color:#cfe4dc}.howto b{color:var(--g)}
-.note{margin-top:12px;padding:10px 12px;border-left:3px solid var(--y);background:#12100a;color:#cfc8a9;font-size:12px}
-.layout{display:grid;grid-template-columns:300px 1fr;gap:14px;margin-top:16px}
-.sidebar{padding:10px}
-.search{width:100%;padding:10px;background:#080c0f;border:1px solid var(--line);border-radius:8px;color:#fff;margin-bottom:8px}
-.module{width:100%;text-align:left;border:0;background:transparent;color:#dfffee;padding:8px 9px}
-.module.active{background:#0d1c17}
+.howto{color:#cfe4dc;margin:8px 0 0;padding-left:18px}.howto b{color:var(--g)}
+.note{margin-top:10px;padding:8px 10px;border-left:3px solid var(--y);background:#12100a;color:#cfc8a9;font-size:12px}
+.sidebar{display:none}
 .module-head{padding:18px 20px}
 .sec-acc{margin-top:10px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
 .sec-btn{width:100%;text-align:left;background:transparent;border:0;padding:14px 16px}
@@ -42,45 +48,75 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
 .check{display:flex;gap:9px;padding:8px 0;border-top:1px solid #182127}
 .text-input{width:100%;margin-top:4px;padding:8px;border-radius:8px;border:1px solid var(--line);background:#080c0f;color:#fff}
 .btn{background:#0e1519;color:#eafff5;border:1px solid #34434c;border-radius:8px;padding:8px 11px}
-.btn.primary{border-color:#00ff8770}
+.btn.primary{border-color:#00ff8770;background:#0c1a15}
 .footer-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
 .progressbar{height:7px;background:#12191e;border-radius:99px;overflow:hidden;margin-top:14px}
 .progressbar i{display:block;height:100%;background:linear-gradient(90deg,var(--g),var(--c))}
-.toast{position:fixed;right:14px;bottom:14px;background:#0c1a15;border:1px solid #00ff8770;padding:10px 12px;border-radius:10px;display:none}
+.toast{position:fixed;right:14px;bottom:14px;background:#0c1a15;border:1px solid #00ff8770;padding:10px 12px;border-radius:10px;display:none;z-index:80}
 .toast.show{display:block}
 .gate{display:none;position:fixed;inset:0;z-index:90;background:#07070acc;place-items:center;padding:18px}
 .gate.open{display:grid}
 .gate-card{width:min(420px,100%);border:1px solid #00ff8770;background:#0b1216;border-radius:16px;padding:18px}
-.hub a{display:inline-block;margin:6px 8px 0 0;color:var(--g)}
-@media(max-width:980px){.layout{display:flex;flex-direction:column}.drops{width:100%;margin-left:0}.dd-btn{width:100%}.dd-panel{left:0;right:auto}}
+.cert{position:relative;margin-top:8px;padding:28px 22px 22px;background:linear-gradient(#0c1014,#10140e);border:2px solid #c9a22788;border-radius:18px;text-align:center}
+.cert-kicker{font:11px ui-monospace,monospace;letter-spacing:.28em;color:var(--y)}
+.cert h2{margin:8px 0 6px;font-size:clamp(26px,5vw,40px);color:#f6e7b2}
+.cert-line,.cert-sub{color:var(--muted);margin:0}
+.cert-path{font:800 22px/1.15 system-ui;color:var(--g);margin:10px 0}
+.cert-fields{display:grid;gap:10px;text-align:left;margin:18px auto 0;max-width:420px}
+.cert-fields span{font:10px ui-monospace,monospace;color:var(--c)}
+.cert-foot{margin-top:16px;font:10px ui-monospace,monospace;color:var(--muted)}
+.cert-stamp{display:inline-block;margin-top:12px;padding:6px 14px;border:2px solid var(--g);color:var(--g);letter-spacing:.2em;font:700 12px ui-monospace,monospace;transform:rotate(-8deg)}
+.cert.signed{box-shadow:0 0 40px #00ff8722}
+#burst{position:fixed;inset:0;z-index:95;pointer-events:none}
+.markfx{display:none;position:fixed;inset:0;z-index:96;place-items:center;background:#0006;pointer-events:none}
+.markfx.show{display:grid}
+.markfx-card{text-align:center;padding:22px 28px;border:1px solid #00ff8777;background:#07110e;border-radius:16px;animation:pop .35s ease}
+.markfx-card b{display:block;font-size:clamp(28px,7vw,52px);color:var(--g)}
+.markfx-card span{color:#d5fff0}
+.markfx.m50 .markfx-card b{color:var(--c)}
+.markfx.m75 .markfx-card b{color:var(--y)}
+.markfx.m100 .markfx-card{border-color:#ffcc00;box-shadow:0 0 80px #ffcc0088;animation:boom .55s ease}
+.markfx.m100 .markfx-card b{color:#ffe27a;text-shadow:0 0 22px #ffcc00}
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
+@keyframes boom{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.12)}100%{transform:none;opacity:1}}
+.hub a{display:inline-block;margin:6px 8px 0 0;color:var(--g);text-decoration:none}
+@media(max-width:980px){.drops{width:100%;margin-left:0}.dd-btn{width:100%}.dd{flex:1 1 46%}.dd-panel{left:0;right:auto}}
 </style>
 </head>
 <body>
-<header class="top"><div class="topbar">
-  <div class="nexus-stamp"><h1>NEXUS</h1><p>NExtended Xperimental USers</p></div>
-  <div class="drops">
-    <div class="dd" id="pathDD"><button class="dd-btn" type="button" onclick="toggleMenu('pathDD',event)"><span class="k" id="pathBtnK">PATH</span><span class="v" id="pathBtnVal">Level 1</span></button><div class="dd-panel"><input class="dd-search" placeholder="Filter paths" oninput="filterDrop('pathDD')"><div class="dd-list" id="pathList"></div></div></div>
-    <div class="dd" id="modDD"><button class="dd-btn" type="button" onclick="toggleMenu('modDD',event)"><span class="k" id="modBtnK">MODULE</span><span class="v" id="modBtnVal">Open modules</span></button><div class="dd-panel"><input class="dd-search" placeholder="Jump module" oninput="filterDrop('modDD')"><div class="dd-list" id="modList"></div></div></div>
-    <div class="dd" id="actDD"><button class="dd-btn" type="button" onclick="toggleMenu('actDD',event)"><span class="k">ACTIONS</span><span class="v">Record / Reset</span></button><div class="dd-panel"><div class="dd-list"><button class="dd-item" type="button" onclick="exportRecord()">Training Record</button><button class="dd-item" type="button" onclick="resetProgress()">Reset Progress</button></div></div></div>
-    <button class="dd-btn" type="button" onclick="toggleAudience(event)"><span class="k">AUDIENCE</span><span class="v" id="audVal">Technician</span></button>
-    <div class="dd" id="appDD"><button class="dd-btn" type="button" onclick="toggleMenu('appDD',event)"><span class="k">NEXUS APPS</span><span class="v">Open related tools</span></button><div class="dd-panel"><div class="dd-list" id="appList"></div></div></div>
+<canvas id="burst"></canvas>
+<div class="markfx" id="markFX"><div class="markfx-card"><b id="markTitle">MARK</b><span id="markSub"></span></div></div>
+<header class="top">
+  <div class="topbar">
+    <div class="nexus-stamp"><h1>NEXUS</h1><p>NExtended Xperimental USers</p></div>
+    <div class="drops">
+      <div class="dd" id="pathDD"><button class="dd-btn" type="button" onclick="toggleMenu('pathDD',event)"><span class="k" id="pathBtnK">PATH</span><span class="v" id="pathBtnVal">Level 1</span></button><div class="dd-panel"><input class="dd-search" placeholder="Filter paths" oninput="filterDrop('pathDD')"><div class="dd-list" id="pathList"></div></div></div>
+      <div class="dd" id="modDD"><button class="dd-btn" type="button" onclick="toggleMenu('modDD',event)"><span class="k" id="modBtnK">MODULE</span><span class="v" id="modBtnVal">Open modules</span></button><div class="dd-panel"><input class="dd-search" placeholder="Jump module" oninput="filterDrop('modDD')"><div class="dd-list" id="modList"></div></div></div>
+      <div class="dd" id="actDD"><button class="dd-btn" type="button" onclick="toggleMenu('actDD',event)"><span class="k">ACTIONS</span><span class="v">Record / Reset</span></button><div class="dd-panel"><div class="dd-list"><button class="dd-item" type="button" onclick="exportRecord()">Training Record</button><button class="dd-item" type="button" onclick="resetProgress()">Reset Progress</button></div></div></div>
+      <button class="dd-btn" type="button" onclick="toggleAudience(event)"><span class="k">AUDIENCE</span><span class="v" id="audVal">Technician</span></button>
+      <div class="dd" id="appDD"><button class="dd-btn" type="button" onclick="toggleMenu('appDD',event)"><span class="k">NEXUS APPS</span><span class="v">Open related tools</span></button><div class="dd-panel"><div class="dd-list" id="appList"></div></div></div>
+    </div>
   </div>
-</div></header>
+  <div class="pbar-wrap">
+    <div class="pbar-meta"><span id="pathPctSub">PATH PROGRESS</span><b id="pathPctLab">0%</b></div>
+    <div class="pbar"><i id="pathFill"></i><span class="pmark" data-v="25"></span><span class="pmark" data-v="50"></span><span class="pmark" data-v="75"></span><span class="pmark" data-v="100"></span></div>
+  </div>
+</header>
 <div class="shell">
   <section class="card hero-card">
     <div class="kicker">HOW TO USE THIS</div>
-    <h2>Start on <span style="color:var(--c)">Level 1 - New Technician</span></h2>
+    <h2 style="margin:6px 0 0">Start on <span style="color:var(--c)">Level 1 - New Technician</span></h2>
     <ol class="howto">
-      <li><b>Open PATH</b> to switch Level 1 / 2 / 3 / 4.</li>
-      <li><b>Open MODULE</b> and tap a module name. That is the drop-down.</li>
-      <li><b>Tap a section title</b> to show checkboxes.</li>
+      <li><b>PATH</b> dropdown chooses the level.</li>
+      <li><b>MODULE</b> dropdown is the lesson list.</li>
+      <li>Tap a <b>section title</b> to drop the checkboxes.</li>
     </ol>
     <div class="hub" id="heroHub"></div>
     <div class="note">Stop. Protect. Document. Escalate.</div>
-    <div style="display:flex;gap:8px;margin-top:12px"><div><b id="moduleCount">0</b> MODULES</div><div><b id="doneCount">0%</b> COMPLETE</div><div><b id="checkCount">0</b> CHECKS</div></div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><div><b id="moduleCount">0</b> MODULES</div><div><b id="doneCount">0%</b> COMPLETE</div><div><b id="checkCount">0</b> CHECKS</div></div>
   </section>
   <section class="layout">
-    <aside class="sidebar card"><input id="search" class="search" placeholder="Filter modules" oninput="renderModulesNav()"><div id="moduleList"></div></aside>
+    <aside class="sidebar card"><div id="moduleList"></div></aside>
     <main id="main"></main>
   </section>
 </div>
@@ -93,4 +129,5 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
 <script src="data-boot.js"></script>
 <script src="app.js"></script>
 <script src="app-apps.js"></script>
+<script src="app-ux.js"></script>
 </body></html>
