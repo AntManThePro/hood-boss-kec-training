@@ -1,9 +1,20 @@
 (function(){
+  function list(){ return (typeof modules==="function") ? modules() : []; }
+  function signoffMod(){ return list().filter(function(m){ return m.signoff; })[0] || null; }
+  function workMods(){ return list().filter(function(m){ return !m.signoff; }); }
+  function signoffReady(){
+    var work = workMods();
+    if(!work.length) return false;
+    return work.every(function(m){ return moduleDone(m.id); });
+  }
+  function missingNames(){
+    return workMods().filter(function(m){ return !moduleDone(m.id); }).map(function(m){ return m.title; });
+  }
   function pathPct(){
-    var list = (typeof modules==="function") ? modules() : [];
-    if(!list.length) return 0;
-    var done = list.filter(function(m){ return moduleDone(m.id); }).length;
-    return Math.round(done / list.length * 100);
+    var all = list();
+    if(!all.length) return 0;
+    var done = all.filter(function(m){ return moduleDone(m.id); }).length;
+    return Math.round(done / all.length * 100);
   }
   function modulePct(){
     var m = (typeof moduleData==="function") ? moduleData() : null;
@@ -98,9 +109,29 @@
     }
     if(pct < last){ state.seenMarks[key] = pct < 25 ? 0 : pct < 50 ? 25 : pct < 75 ? 50 : 75; }
   }
+  function paintLockedCert(){
+    var host = document.getElementById("main");
+    if(!host) return;
+    var miss = missingNames();
+    var next = workMods().filter(function(m){ return !moduleDone(m.id); })[0];
+    host.innerHTML =
+      '<section class="cert">'+ 
+        '<div class="cert-kicker">LOCKED UNTIL THE END</div>'+
+        '<h2>Certificate waits</h2>'+
+        '<p class="cert-line">Sign-off is the last step on this path.</p>'+
+        '<p class="cert-sub">Finish every module and pass the quiz first.</p>'+
+        '<p class="cert-path">'+(miss.length? (miss.length+" left") : "")+'</p>'+
+        '<div class="note" style="text-align:left">Still open: '+esc(miss.slice(0,4).join(" · "))+(miss.length>4?" …":"")+'</div>'+
+        (next?'<div class="footer-actions"><button class="btn primary" id="goNextWork">Go to '+esc(next.title)+'</button></div>':'')+
+        '<div class="cert-foot">The certificate only prints after the work is done.</div>'+
+      '</section>';
+    var b = host.querySelector("#goNextWork");
+    if(b && next) b.onclick = function(){ selectModule(next.id); };
+  }
   function paintCert(){
     var m = moduleData();
     if(!m || !m.signoff) return;
+    if(!signoffReady()){ paintLockedCert(); return; }
     var host = document.getElementById("main");
     if(!host) return;
     var saved = getChecks(m.id);
@@ -109,7 +140,7 @@
     var done = saved.signoff;
     host.innerHTML =
       '<section class="cert '+(done?"signed":"")+'">'+ 
-        '<div class="cert-kicker">NEXUS · HOOD BOSS</div>'+
+        '<div class="cert-kicker">NEXUS · HOOD BOSS · FINAL STEP</div>'+
         '<h2>Certificate of Participation</h2>'+
         '<p class="cert-line">This certifies participation in</p>'+
         '<p class="cert-path">'+esc(p.level)+'<br>'+esc(p.name)+'</p>'+
@@ -134,7 +165,7 @@
       state.progress[moduleKey(m.id)] = saved;
       save();
       renderAll();
-      showMark("SIGNED", "Participation recorded on this device.", "m50", false);
+      showMark("SIGNED", "Participation recorded on this device.", "m100", true);
     };
   }
   var _update = typeof updateStats==="function" ? updateStats : function(){};
@@ -145,10 +176,37 @@
     var m = moduleData();
     if(m && m.signoff) paintCert();
   };
+  var _select = typeof selectModule==="function" ? selectModule : function(){};
+  selectModule = function(mid){
+    var target = list().filter(function(m){ return m.id===mid; })[0];
+    if(target && target.signoff && !signoffReady()){
+      _select(mid);
+      paintLockedCert();
+      if(typeof toast==="function") toast("Certificate is last. Finish the modules and quiz first.");
+      return;
+    }
+    _select(mid);
+  };
+  var _drop = typeof renderModuleDrop==="function" ? renderModuleDrop : function(){};
+  renderModuleDrop = function(){
+    _drop();
+    var host = document.getElementById("modList");
+    if(!host) return;
+    var so = signoffMod();
+    if(!so) return;
+    var ready = signoffReady();
+    host.querySelectorAll(".dd-item").forEach(function(btn){
+      var oc = btn.getAttribute("onclick")||"";
+      if(oc.indexOf(so.id)===-1) return;
+      btn.innerHTML = (ready ? "END  " : "LOCKED  ") + (so.title||"Sign-Off");
+    });
+  };
   renderModulesNav = function(){
     var host = document.getElementById("moduleList");
     if(host) host.innerHTML = "";
   };
+  window.selectModule = selectModule;
+  window.renderModuleDrop = renderModuleDrop;
   window.renderModulesNav = renderModulesNav;
   if(document.readyState==="loading") document.addEventListener("DOMContentLoaded", paintBar);
   else paintBar();
