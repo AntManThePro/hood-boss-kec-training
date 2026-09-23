@@ -1,13 +1,14 @@
-# Hood Boss KEC Training — Field Handout v12
+# hood-boss-kec-training
 
-**This README is not the app.**
+Hood Boss KEC Training field plate.
 
-## Open the training plate
+Designed and created by **NEXUS** — NExtended Xperimental USers.
+Built for Hood Boss. Made by NEXUS.
 
-1. In this repo tap **index.html**
-2. Or after Pages is enabled: https://antmanthepro.github.io/hood-boss-kec-training/
+## Open the app
 
-Techs start on **Level 1 · New Technician**. Manager / TWC tools stay locked.
+https://antmanthepro.github.io/hood-boss-kec-training/
 
-NEXUS · DoubleA · AntManThePro  
+Techs start on Level 1 · New Technician. Manager / TWC tools stay locked.
+
 Stop. Protect. Document. Escalate.

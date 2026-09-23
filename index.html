@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#07070a">
-<title>Hood Boss KEC Training System - Field Handout - NEXUS v12</title>
+<title>hood-boss-kec-training</title>
 <link rel="icon" href="icons/favicon.svg">
 <style>
 :root{--g:#00ff87;--c:#60efff;--y:#ffcc00;--p:#ff0080;--bg:#07070a;--line:#26323a;--muted:#84929b;--text:#ecfff7}
@@ -12,7 +12,7 @@
 button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
 .top{position:sticky;top:0;z-index:40;background:#07070af5;border-bottom:1px solid var(--line)}
 .topbar{max-width:1100px;margin:auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-.nexus-stamp h1{margin:0;font-size:18px;letter-spacing:.14em;color:var(--g)}
+.nexus-stamp h1{margin:0;font-size:16px;letter-spacing:.04em;color:var(--g)}
 .nexus-stamp p{margin:0;font:10px ui-monospace,monospace;color:var(--c)}
 .drops{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
 .dd{position:relative}
@@ -80,6 +80,8 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
 @keyframes pop{from{transform:scale(.7);opacity:0}to{transform:none;opacity:1}}
 @keyframes boom{0%{transform:scale(.4);opacity:0}60%{transform:scale(1.12)}100%{transform:none;opacity:1}}
 .hub a{display:inline-block;margin:6px 8px 0 0;color:var(--g);text-decoration:none}
+.credit{margin-top:28px;padding:14px 4px 8px;border-top:1px solid var(--line);font:11px ui-monospace,monospace;color:var(--muted);letter-spacing:.04em}
+.credit b{color:var(--g)}
 @media(max-width:980px){.drops{width:100%;margin-left:0}.dd-btn{width:100%}.dd{flex:1 1 46%}.dd-panel{left:0;right:auto}}
 </style>
 </head>
@@ -88,7 +90,10 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
 <div class="markfx" id="markFX"><div class="markfx-card"><b id="markTitle">MARK</b><span id="markSub"></span></div></div>
 <header class="top">
   <div class="topbar">
-    <div class="nexus-stamp"><h1>NEXUS</h1><p>NExtended Xperimental USers</p></div>
+    <div class="nexus-stamp">
+      <h1>hood-boss-kec-training</h1>
+      <p>Designed &amp; created by NEXUS · NExtended Xperimental USers</p>
+    </div>
     <div class="drops">
       <div class="dd" id="pathDD"><button class="dd-btn" type="button" onclick="toggleMenu('pathDD',event)"><span class="k" id="pathBtnK">PATH</span><span class="v" id="pathBtnVal">Level 1</span></button><div class="dd-panel"><input class="dd-search" placeholder="Filter paths" oninput="filterDrop('pathDD')"><div class="dd-list" id="pathList"></div></div></div>
       <div class="dd" id="modDD"><button class="dd-btn" type="button" onclick="toggleMenu('modDD',event)"><span class="k" id="modBtnK">MODULE</span><span class="v" id="modBtnVal">Open modules</span></button><div class="dd-panel"><input class="dd-search" placeholder="Jump module" oninput="filterDrop('modDD')"><div class="dd-list" id="modList"></div></div></div>
@@ -104,8 +109,9 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
 </header>
 <div class="shell">
   <section class="card hero-card">
-    <div class="kicker">HOW TO USE THIS</div>
-    <h2 style="margin:6px 0 0">Start on <span style="color:var(--c)">Level 1 - New Technician</span></h2>
+    <div class="kicker">HOOD BOSS FIELD PLATE</div>
+    <h2 style="margin:6px 0 0">hood-boss-kec-training</h2>
+    <p style="color:var(--muted);margin:6px 0 0">For Hood Boss. Designed and created by <b style="color:var(--g)">NEXUS</b> — NExtended Xperimental USers.</p>
     <ol class="howto">
       <li><b>PATH</b> dropdown chooses the level.</li>
       <li><b>MODULE</b> dropdown is the lesson list.</li>
@@ -119,6 +125,7 @@ button,input,textarea{font:inherit;color:inherit}button{cursor:pointer}
     <aside class="sidebar card"><div id="moduleList"></div></aside>
     <main id="main"></main>
   </section>
+  <div class="credit">Designed and created by <b>NEXUS</b> · NExtended Xperimental USers · Built for Hood Boss · github.com/AntManThePro/hood-boss-kec-training</div>
 </div>
 <div class="toast" id="toast"></div>
 <div class="gate" id="mgrGate"><form class="gate-card" onsubmit="unlockManager(event)"><h3>Manager tools</h3><input id="mgrPass" class="text-input" type="password" placeholder="Manager code"><div id="mgrErr"></div><button class="btn primary" type="submit">Unlock</button> <button class="btn" type="button" onclick="closeGate()">Cancel</button></form></div>
