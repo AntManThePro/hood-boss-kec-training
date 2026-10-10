@@ -1,7 +1,7 @@
 {
-  "name": "Hood-Boss-KEC-Training",
-  "short_name": "KEC Training",
-  "description": "Kitchen exhaust cleaning field training manual for Hood Boss. Designed and created by NEXUS.",
+  "name": "Academy Field Manual — Hood Boss",
+  "short_name": "Field Manual",
+  "description": "Checkbox field manual for Hood Boss Academy. Same course. Not a second school.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
