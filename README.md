@@ -1,14 +1,15 @@
-# hood-boss-kec-training
+# Academy Field Manual
 
-Hood Boss KEC Training field plate.
+Checkbox copy of Hood Boss Academy. Same course. Not a second school.
 
-Designed and created by **NEXUS** — NExtended Xperimental USers.
-Built for Hood Boss. Made by NEXUS.
+Academy is the class: https://hbacademy.netlify.app/
+This page is the truck checklist for that class.
+New-hire path: https://hb-new-hire-packet.netlify.app/
 
-## Open the app
+## Open the manual
 
 https://antmanthepro.github.io/hood-boss-kec-training/
 
-Techs start on Level 1 · New Technician. Manager / TWC tools stay locked.
+Techs start on Level 1. Manager tools stay locked.
 
 Stop. Protect. Document. Escalate.
