@@ -5,7 +5,7 @@ Technician view first. Manager / TWC second.
 ## TECH
 
 TECH · TRAINING	Hood Boss Academy	Netlify	https://hbacademy.netlify.app/
-TECH · ON THE JOB	Field Tech Playbook	Vercel	https://hood-boss-field-playbook-4001xvgm9-antmanthepros-projects.vercel.app/
+TECH · ON THE JOB	Field Tech Playbook	Netlify	https://hb-field-playbook.netlify.app/
 TECH · PHOTOS	MyTechPix Guide	Netlify	https://mytechpix-guide-for-techs.netlify.app/
 TECH · STANDARD	HB-Q10 Field Proof	Netlify	https://hb-cect-orientation.netlify.app/
 TECH · SAFETY	KEC Safety Meeting	Netlify	https://hood-boss-monthly-meeting.netlify.app/
