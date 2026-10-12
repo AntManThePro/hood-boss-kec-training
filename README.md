@@ -1,13 +1,13 @@
-# Truck Checkboxes
+# HB KEC Training System
 
-Boxes for Hood Boss Academy. Same lessons. Not a second class.
+The operating system for Hood Boss field training.
 
 Academy is the class: https://hbacademy.netlify.app/
-This page is only the boxes.
+Field checkboxes: https://hb-field-playbook.netlify.app/
 New-hire path: https://hb-new-hire-packet.netlify.app/
 
-## Open the boxes
+## Open the system
 
-https://antmanthepro.github.io/hood-boss-kec-training/
+https://hood-boss-kec-training.netlify.app/
 
 Stop. Protect. Document. Escalate.
