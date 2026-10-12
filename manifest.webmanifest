@@ -1,7 +1,7 @@
 {
-  "name": "Truck Checkboxes — Hood Boss",
-  "short_name": "Checkboxes",
-  "description": "Truck checkboxes for Hood Boss Academy. Same lessons. Not a second class.",
+  "name": "HB KEC Training System",
+  "short_name": "KEC System",
+  "description": "Hood Boss KEC Training System. The operating system.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
