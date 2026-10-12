@@ -83,7 +83,7 @@ function renderAppDrop(){
 function renderHeroHub(){
   const host=document.getElementById("heroHub");
   if(!host) return;
-  const featured=isMgr()?["academy","tlos","qa","shield","follow","ready"]:["academy","playbook","mtpguide","safety"];
+  const featured=isMgr()?["academy","playbook","tlos","qa","shield","follow"]:["academy","playbook","mtpguide","safety"];
   host.innerHTML=featured.filter(id=>APP_BY[id] && allowedId(id)).map(id=>{
     const a=APP_BY[id];
     return '<a href="'+esc(a.url)+'" target="_blank" rel="noopener noreferrer"><b>'+esc(a.name)+'</b><span>'+esc(a.blurb)+'</span></a>';
