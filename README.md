@@ -1,15 +1,13 @@
-# Academy Field Manual
+# Truck Checkboxes
 
-Checkbox copy of Hood Boss Academy. Same course. Not a second school.
+Boxes for Hood Boss Academy. Same lessons. Not a second class.
 
 Academy is the class: https://hbacademy.netlify.app/
-This page is the truck checklist for that class.
+This page is only the boxes.
 New-hire path: https://hb-new-hire-packet.netlify.app/
 
-## Open the manual
+## Open the boxes
 
 https://antmanthepro.github.io/hood-boss-kec-training/
-
-Techs start on Level 1. Manager tools stay locked.
 
 Stop. Protect. Document. Escalate.
