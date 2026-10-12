@@ -1,7 +1,7 @@
 {
-  "name": "Academy Field Manual — Hood Boss",
-  "short_name": "Field Manual",
-  "description": "Checkbox field manual for Hood Boss Academy. Same course. Not a second school.",
+  "name": "Truck Checkboxes — Hood Boss",
+  "short_name": "Checkboxes",
+  "description": "Truck checkboxes for Hood Boss Academy. Same lessons. Not a second class.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
