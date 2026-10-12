@@ -1,6 +1,6 @@
 
 const APPS = [
-  {id:"academy",name:"Hood Boss Academy",label:"TECH - TRAINING",host:"Netlify",kind:"app",aud:"tech",url:"https://hbacademy.netlify.app/",blurb:"The class. This manual is the checkbox copy."},
+  {id:"academy",name:"Hood Boss Academy",label:"TECH - TRAINING",host:"Netlify",kind:"app",aud:"tech",url:"https://hbacademy.netlify.app/",blurb:"The class. Start there."},
   {id:"playbook",name:"Field Tech Playbook",label:"TECH - ON THE JOB",host:"Netlify",kind:"app",aud:"tech",url:"https://hb-field-playbook.netlify.app/",blurb:"Job checklist. Photos, defects, white glove, leave-the-job gate"},
   {id:"mtpguide",name:"MyTechPix Guide",label:"TECH - PHOTOS",host:"Netlify",kind:"app",aud:"tech",url:"https://mytechpix-guide-for-techs.netlify.app/",blurb:"How to shoot Blue / Green / Red on the phone"},
   {id:"q10",name:"HB-Q10 Field Proof",label:"TECH - STANDARD",host:"Netlify",kind:"app",aud:"tech",url:"https://hb-cect-orientation.netlify.app/",blurb:"What the photos have to prove"},
